@@ -1,4 +1,4 @@
-package banking;
+package banking.banking;
 import java.util.Random;
 
 public class Savings extends Account {

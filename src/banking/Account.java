@@ -1,4 +1,4 @@
-package banking;
+package banking.banking;
 
 abstract class Account {
     String accountNumber;
