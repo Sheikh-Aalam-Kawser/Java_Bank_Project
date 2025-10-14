@@ -1,5 +1,11 @@
 package banking.banking;
 
+/*
+* Abstract class representing a bank account.
+* This class defines common properties and methods for
+* different types of accounts(e.g., Savings Account, Current Account)
+*/
+
 abstract class Account {
     String accountNumber; // Account number for identification of account
     String holderName;    // Name of the account holder
