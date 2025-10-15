@@ -79,7 +79,7 @@ public class Bank {
                     }
                 }
                 if (!found) {
-                    System.out.println("Account not found");
+                    System.out.println("Incorrect Account number or Passowrd!");
                 }
                 break;
             case 4:
