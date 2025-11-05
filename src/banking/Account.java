@@ -1,34 +1,41 @@
 package banking.banking;
 
-/*
- * Abstract class representing a bank account.
- * This class defines common properties and methods for
- * different types of accounts(e.g., Savings Account, Current Account)
- */
+import java.util.ArrayList;
 
 abstract class Account {
-    String accountNumber; // Account number for identification of account
-    String holderName;    // Name of the account holder
-    double balance;       // Account balance
-    String password;      // Password for authentication
-
-    /*
-     * Constructor to initialize a new account
-     */
+    private String accountNumber;
+    private String holderName;
+    protected double balance;
+    private String password;
+    protected ArrayList<String> transactions = new ArrayList<>();
 
     public Account(String accountNumber, String holderName, double balance, String password) {
         this.accountNumber = accountNumber;
         this.holderName = holderName;
         this.balance = balance;
         this.password = password;
+        transactions.add("Account created with initial balance: Rs. " + balance);
     }
 
-    /* Deposit an amount into the account. */
     abstract void deposit(double amount);
 
-    /* Withdraw an amount from the account. */
     abstract void withdraw(double amount);
 
-    /* Print or return the account statement. */
     abstract void statement();
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getHolderName() {
+        return holderName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public boolean checkPassword(String inputPassword) {
+        return password.equals(inputPassword);
+    }
 }
