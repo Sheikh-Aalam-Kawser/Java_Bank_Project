@@ -3,10 +3,10 @@ package banking.banking;
 import java.util.ArrayList;
 
 abstract class Account {
-    private String accountNumber;
-    private String holderName;
+    private final String accountNumber;
+    private final String holderName;
     protected double balance;
-    private String password;
+    private final String password;
     protected ArrayList<String> transactions = new ArrayList<>();
 
     public Account(String accountNumber, String holderName, double balance, String password) {
@@ -16,12 +16,42 @@ abstract class Account {
         this.password = password;
         transactions.add("Account created with initial balance: Rs. " + balance);
     }
+    public void deposit(double amount) {
+        if (amount <= 0) {
+            System.out.println("Invalid amount!");
+        } else {
+            balance += amount;
+            transactions.add("Deposited Rs. " + amount + " | Balance: Rs. " + balance);
+            System.out.println("Deposited Rs. " + amount);
+            System.out.println("Balance: " + balance);
+        }
+    }
+    public void withdraw(double amount) {
+        if (amount <= 0) {
+            System.out.println("Invalid amount!");
+            return;
+        }
 
-    abstract void deposit(double amount);
-
-    abstract void withdraw(double amount);
-
-    abstract void statement();
+        if (amount > balance) {
+            System.out.println("Insufficient balance!");
+            return;
+        }
+        balance -= amount;
+        transactions.add("Withdrawn Rs. " + amount + " | Balance: Rs. " + balance);
+        System.out.println("Withdrawn Rs. " + amount);
+        System.out.println("Balance: " + balance);
+    }
+    public void statement() {
+        System.out.println("=============== Account Statement ===============");
+        System.out.println("Account Number: " + getAccountNumber());
+        System.out.println("Name of Account Holder: " + getHolderName());
+        System.out.println("Account Balance: " + balance);
+        System.out.println("-------------- Transaction History --------------");
+        for (String tn : transactions) {
+            System.out.println(tn);
+        }
+        System.out.println("--------------------------------------------------");
+    }
 
     public String getAccountNumber() {
         return accountNumber;
@@ -29,10 +59,6 @@ abstract class Account {
 
     public String getHolderName() {
         return holderName;
-    }
-
-    public double getBalance() {
-        return balance;
     }
 
     public boolean checkPassword(String inputPassword) {
