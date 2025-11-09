@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Bank {
-    private static final double MIN_BALANCE = 500.0;
-    private static final int MIN_PASSWORD_LENGTH = 4;
+    static final double minBalance = 500.0;
+    static final int minPasswordLength = 4;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -34,16 +34,16 @@ public class Bank {
                     System.out.print("Enter Balance: ");
                     double balance = sc.nextDouble();
                     sc.nextLine();
-                    while (balance < MIN_BALANCE) {
-                        System.out.print("Minimum balance should be ₹" + MIN_BALANCE + ". Enter again: ");
+                    while (balance < minBalance) {
+                        System.out.print("Minimum balance should be ₹" + minBalance + ". Enter again: ");
                         balance = sc.nextDouble();
                         sc.nextLine();
                     }
                     System.out.print("Enter Password: ");
                     String password = sc.nextLine();
-                    while (password.length() < MIN_PASSWORD_LENGTH) {
+                    while (password.length() < minPasswordLength) {
                         System.out.print("Password too short! Enter again: ");
-                        password = sc.nextLine().trim();
+                        password = sc.nextLine();
                     }
                     Savings savings = new Savings(holderName, balance, password);
                     accounts.add(savings);
@@ -59,16 +59,16 @@ public class Bank {
                     System.out.print("Enter Balance: ");
                     double balanceCurrent = sc.nextDouble();
                     sc.nextLine();
-                    while (balanceCurrent < MIN_BALANCE) {
-                        System.out.print("Minimum balance should be ₹" + MIN_BALANCE + ". Enter again: ");
+                    while (balanceCurrent < minBalance) {
+                        System.out.print("Minimum balance should be ₹" + minBalance + ". Enter again: ");
                         balanceCurrent = sc.nextDouble();
                         sc.nextLine();
                     }
                     System.out.print("Enter Password: ");
                     String passwordCurrent = sc.nextLine();
-                    while (passwordCurrent.length() < MIN_PASSWORD_LENGTH) {
+                    while (passwordCurrent.length() < minPasswordLength) {
                         System.out.print("Password too short! Enter again: ");
-                        passwordCurrent = sc.nextLine().trim();
+                        passwordCurrent = sc.nextLine();
                     }
                     Current current = new Current(holderNameCurrent, balanceCurrent, passwordCurrent);
                     accounts.add(current);
