@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Bank {
-    static final double minBalance = 500.0;
-    static final int minPasswordLength = 4;
+    static final double minBalanceCurrent = 1000.0;
+    static final double minBalanceSavings = 500.0;
+    static final int minPasswordLength = 8;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -34,8 +35,8 @@ public class Bank {
                     System.out.print("Enter Balance: ");
                     double balance = sc.nextDouble();
                     sc.nextLine();
-                    while (balance < minBalance) {
-                        System.out.print("Minimum balance should be ₹" + minBalance + ". Enter again: ");
+                    while (balance < minBalanceSavings) {
+                        System.out.print("Minimum balance should be ₹" + minBalanceSavings + ". Enter again: ");
                         balance = sc.nextDouble();
                         sc.nextLine();
                     }
@@ -59,8 +60,8 @@ public class Bank {
                     System.out.print("Enter Balance: ");
                     double balanceCurrent = sc.nextDouble();
                     sc.nextLine();
-                    while (balanceCurrent < minBalance) {
-                        System.out.print("Minimum balance should be ₹" + minBalance + ". Enter again: ");
+                    while (balanceCurrent < minBalanceCurrent) {
+                        System.out.print("Minimum balance should be ₹" + minBalanceCurrent + ". Enter again: ");
                         balanceCurrent = sc.nextDouble();
                         sc.nextLine();
                     }
@@ -128,7 +129,6 @@ public class Bank {
                 case 4:
                     run = false;
                     System.out.println("Thank you for using our Bank Application");
-                    sc.close();
                     break;
                 default:
                     System.out.println("Invalid choice");
